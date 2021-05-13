@@ -1,8 +1,11 @@
-'use strict';
 const express = require('express');
-const open = require("open");
+const open = require('open');
 const bodyParser = require('body-parser');
-var cors = require('cors')
+const exphbs = require('express-handlebars');
+const cookieParser = require('cookie-parser');
+const cors = require('cors');
+
+
 const app = express();
 app.use(cors())
 app.use(express.static('docs'));
