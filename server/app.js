@@ -21,6 +21,11 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json())
+app.use(cookieParser());
+app.engine('hbs', exphbs(
+{
+    extname:'.hbs',
+}));
 
 // define a root route
 
@@ -32,9 +37,9 @@ app.use('/api/v1/cities', citiesRoutes)
 
 app.set('port', process.env.PORT || 8000);
 app.set('ip', process.env.NODEJS_IP || '127.0.0.1');
+app.set('view engine','hbs');
 
 app.listen(app.get('port'), function() {
     console.log('%s: Node server started on %s ...', Date(Date.now()), app.get('port'));
     open("http://localhost:8000");
-
 });
