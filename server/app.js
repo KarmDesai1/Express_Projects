@@ -9,6 +9,12 @@ const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 require('dotenv').config();
 const authRouter = require('./auth');
+const jwt = require('jsonwebtoken');
+const bodyParser = require('body-parser');
+
+const accessTokenSecret = 'youraccesstokensecret';
+
+app.use(bodyParser.json());
 
 const app = express();
 app.use(cors());
