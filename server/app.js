@@ -87,4 +87,23 @@ app.set('ip', process.env.NODEJS_IP || '127.0.0.1');
 app.listen(app.get('port'), () => {
     console.log('%s: Node server started on %s ...', Date(Date.now()), app.get('port'));
     open('http://localhost:8000/login');
+})
+
+app.post('/login', (req, res) => {
+    // Read username and password from request body
+    const { username, password } = req.body;
+
+    // Filter user from the users array by username and password
+    const user = users.find(u => { return u.username === username && u.password === password });
+
+    if (user) {
+        // Generate an access token
+        const accessToken = jwt.sign({ username: user.username,  role: user.role }, accessTokenSecret);
+
+        res.json({
+            accessToken
+        });
+    } else {
+        res.send('Username or password incorrect');
+    }
 });
