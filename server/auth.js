@@ -66,6 +66,17 @@ router.get('/logout', (req, res) => {
 
     res.redirect(logoutURL);
 });
+const users = [
+    {
+        username: 'Karm',
+        password: 'password',
+        role: 'admin'
+    }, {
+        username: 'Desai',
+        password: 'password123',
+        role: 'member'
+    }
+];
 /**
  * Module Exports
  */

@@ -12,7 +12,7 @@ const authRouter = require('./auth');
 const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 
-const accessTokenSecret = 'youraccesstokensecret';
+// const accessTokenSecret = 'youraccesstokensecret';
 
 app.use(bodyParser.json());
 
